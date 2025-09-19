@@ -17,7 +17,11 @@ function convertToObject(sourceString) {
 
   normalizedStyles
     .map((style) => style.split(':'))
-    .map((style) => (objectOfStyles[style[0].trim()] = style[1].trim()));
+    .forEach((style) => {
+      if (style[1]) {
+        objectOfStyles[style[0].trim()] = style[1].trim();
+      }
+    });
 
   return objectOfStyles;
 }
