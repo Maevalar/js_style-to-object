@@ -15,13 +15,13 @@ function convertToObject(sourceString) {
     .map((style) => style.trim())
     .filter((style) => style !== '');
 
-  normalizedStyles
-    .map((style) => style.split(':'))
-    .forEach((style) => {
-      if (style[1]) {
-        objectOfStyles[style[0].trim()] = style[1].trim();
-      }
-    });
+  const normalizedStyle = normalizedStyles.map((style) => style.split(':'));
+
+  normalizedStyle.forEach((style) => {
+    if (style[0].length >= 2 && style[1].length >= 2) {
+      objectOfStyles[style[0].trim()] = style[1].trim();
+    }
+  });
 
   return objectOfStyles;
 }
